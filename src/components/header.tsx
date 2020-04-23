@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
     },
     logoText: {
         fontSize: 22,
-        marginLeft: 10
+        marginLeft: 10,
+        fontWeight: 'bold'
     },
     otherIconsHolder: {
         flex: 1,
