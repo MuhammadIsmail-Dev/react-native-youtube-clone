@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, TextInput, Text } from "react-native";
+import { View, StyleSheet, TextInput, Text, TouchableOpacity } from "react-native";
 import Constant from "expo-constants";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -32,21 +32,21 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Header() {
+export default function Header(props:any) {
   return (
-    <View style={styles.header}>
+    <View style={styles.header} >
       <View style={{ ...styles.searchBoxHolder, ...styles.rowHorizontalCenter }}>
-        <MaterialIcons name="arrow-back" size={28} color="#00000070" />
+        <MaterialIcons name="arrow-back" size={28} color="#00000070"/>
         <TextInput
           style={styles.searchInput}
-          // onChangeText={text => onChangeText(text)}
-          // value={value}
+          onChangeText={text => props.setValue(text)}
+          value={props.value}
           />
       </View>
       <View
         style={{ ...styles.otherIconsHolder, ...styles.rowHorizontalCenter }}
       >
-        <MaterialIcons name="send" size={28} color="#00000070" />
+        <MaterialIcons name="send" size={28} color="#00000070" onPress={() => props.fetchData()}/>
       </View>
     </View>
   );

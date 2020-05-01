@@ -5,11 +5,12 @@ const styles = StyleSheet.create({
   cardHolder: {
     paddingHorizontal: 10,
     paddingTop: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   coverimage: {
     width: "100%",
-    height: 80,
+    height: 90,
   },
   cardDescHolder: {
     flex:3,
@@ -18,20 +19,20 @@ const styles = StyleSheet.create({
   cardDescTagline: {
     fontSize: 16,
     fontWeight: "600",
-    width: Dimensions.get("screen").width - 160,
+    width: Dimensions.get("screen").width - 190,
   },
   cardDescExtraText: {
     color: "#00000090",
   },
 });
 
-export default function Card() {
+export default function Card(props:any) {
   return (
     <View style={styles.cardHolder}>
-      <View style={{flex:2}}>
+      <View style={{flex:3}}>
         <Image
           style={styles.coverimage}
-          source={require("../../../assets/demoImages/videoCardBg.jpeg")}
+          source={{uri: `https://i.ytimg.com/vi/${props.videoId}/maxresdefault.jpg`}}
         />
 
       </View>
@@ -41,10 +42,9 @@ export default function Card() {
               ellipsizeMode={"tail"}
               numberOfLines={3}
             >
-              Video Tagline dummy textVideo Tagline dummy textVideo Tagline
-              dummy textVideo Tagline dummy textVideo Tagline dummy text
+              {props.title}
             </Text>
-            <Text style={styles.cardDescExtraText}>another text</Text>
+            <Text style={styles.cardDescExtraText}>{props.channel}</Text>
       </View>
     </View>
   );
