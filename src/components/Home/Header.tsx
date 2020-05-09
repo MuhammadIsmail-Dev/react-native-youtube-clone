@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, StatusBar, Text } from "react-native";
 import Constant from "expo-constants";
 import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native'
 
 const styles = StyleSheet.create({
   rowHorizontalCenter: {
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
 });
 
 export default function Header() {
+  const navigation = useNavigation();
   return (
     <View style={styles.header}>
       <View style={{ ...styles.logoHolder, ...styles.rowHorizontalCenter }}>
@@ -41,7 +43,9 @@ export default function Header() {
         style={{ ...styles.otherIconsHolder, ...styles.rowHorizontalCenter }}
       >
         <Ionicons name="md-videocam" size={28} color="#00000070" />
-        <Ionicons name="md-search" size={28} color="#00000070" />
+        <Ionicons name="md-search" size={28} color="#00000070" 
+          onPress={() => {navigation.navigate('Search')}}
+        />
         <MaterialIcons name="account-circle" size={28} color="#00000070" />
       </View>
     </View>

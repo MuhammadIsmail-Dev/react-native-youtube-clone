@@ -36,7 +36,9 @@ export default function Header(props:any) {
   return (
     <View style={styles.header} >
       <View style={{ ...styles.searchBoxHolder, ...styles.rowHorizontalCenter }}>
-        <MaterialIcons name="arrow-back" size={28} color="#00000070"/>
+        <MaterialIcons name="arrow-back" size={28} color="#00000070"
+          onPress={()=>props.navigation.goBack()}
+        />
         <TextInput
           style={styles.searchInput}
           onChangeText={text => props.setValue(text)}
@@ -46,7 +48,8 @@ export default function Header(props:any) {
       <View
         style={{ ...styles.otherIconsHolder, ...styles.rowHorizontalCenter }}
       >
-        <MaterialIcons name="send" size={28} color="#00000070" onPress={() => props.fetchData()}/>
+        <MaterialIcons name="send" size={28} color="#00000070" 
+        onPress={() => props.fetchData()}/>
       </View>
     </View>
   );

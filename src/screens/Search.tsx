@@ -4,16 +4,24 @@ import { View, StyleSheet, FlatList, ActivityIndicator } from "react-native";
 import Header from "../components/Search/Header";
 import Card from "../components/Search/Cards";
 
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+
 const styles = StyleSheet.create({
   main: {
     height: "100%",
   },
 });
 
-const Search:React.FC = () => {
+const Search = ({navigation}:any) => {
   const [value, setValue] = useState("");
-	const [cardData, setCardData] = useState< any >([]);
+	// const [cardData, setCardData] = useState([]);
 	const [isLoaing, setIsLoading] = useState(false);
+
+	const dispatch = useDispatch();
+	const cardData = useSelector((state:any) => {
+		return state
+	})
   const fetchData = () => {
 		setIsLoading(true);
     fetch(
@@ -22,14 +30,14 @@ const Search:React.FC = () => {
       .then((res) => res.json())
 			.then((resJson:any) => {
 				setIsLoading(false) 
-				setCardData(resJson.items) 
+				dispatch({type:'add',payload:resJson.items})
 			})
 			.catch(err => console.log('an error occured while fetching search results'));
 	}
 	console.log(value);
   return (
     <View style={styles.main}>
-      <Header setValue={setValue} value={value} fetchData={fetchData} />
+      <Header setValue={setValue} value={value} fetchData={fetchData} navigation={navigation} />
 			{ isLoaing ? <ActivityIndicator style={{marginTop: 10}} size="large" color="red" /> : null}
 			<FlatList
 				data={cardData}

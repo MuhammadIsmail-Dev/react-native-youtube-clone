@@ -32,7 +32,7 @@ export default function Card(props:any) {
       <View style={{flex:3}}>
         <Image
           style={styles.coverimage}
-          source={{uri: `https://i.ytimg.com/vi/${props.videoId}/maxresdefault.jpg`}}
+          source={{uri: `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`}}
         />
 
       </View>
