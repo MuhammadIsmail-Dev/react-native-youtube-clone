@@ -28,12 +28,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Card() {
+export default function Card(props:any) {
   return (
     <View style={styles.cardHolder}>
       <Image
         style={styles.coverimage}
-        source={require("../../../assets/demoImages/videoCardBg.jpeg")}
+        source={{uri: `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`}}
       />
       <View style={styles.cardDescHolder}>
         <View style={styles.cardTagline}>
@@ -49,10 +49,9 @@ export default function Card() {
               ellipsizeMode={"tail"}
               numberOfLines={2}
             >
-              Video Tagline dummy textVideo Tagline dummy textVideo Tagline
-              dummy textVideo Tagline dummy textVideo Tagline dummy text
+            {props.title}
             </Text>
-            <Text style={styles.cardDescExtraText}>another text</Text>
+            <Text style={styles.cardDescExtraText}>{props.channel}</Text>
           </View>
         </View>
       </View>
